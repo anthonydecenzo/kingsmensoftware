@@ -6,5 +6,6 @@ class OrderController < ApplicationController
   end
 
   def index
+  	@orders = Order.where(BuyerId: current_user.id)
   end
 end

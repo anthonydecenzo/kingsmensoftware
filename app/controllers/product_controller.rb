@@ -48,11 +48,25 @@ class ProductController < ApplicationController
 
   def update
   	@product = Product.find(params[:id])
+	
+	if(@product.Quantity > 0 and @product != nil)
+	  	@order = Order.new
 
-  	@order = Order.new
+	  	@order.SellerId = @product.UserId
+	  	@order.BuyerId = current_user.id
+	  	@order.ProductId = @product.id
+	  	@order.Quantity = 1
+	  	@order.Notified = false
 
-  	@order.SellerId = @product.UserId
-  	
+	  	@order.save
+
+	  	@product.Quantity = @product.Quantity - 1
+	  	@product.save
+
+	  	render 'show'
+	  else 
+	  	render 'show'
+	 end
   end
 
   # strong params are useful for requiring and permitting certain data fields
