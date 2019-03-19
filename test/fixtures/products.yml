@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  UserId: 
+  UserId: 1
   Name: MyString
   Description: MyString
-  Quantity: 
-  Price: 
+  Quantity: 1
+  Price: 9.99
 
 two:
-  UserId: 
+  UserId: 1
   Name: MyString
   Description: MyString
-  Quantity: 
-  Price: 
+  Quantity: 1
+  Price: 9.99
