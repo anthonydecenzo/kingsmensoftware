@@ -32,17 +32,18 @@
               </div>
             </div>
           </div>
+				<div class="form-row">
 
-          <%= form_for(@product, :url => {:action => 'update'}) do |f| %>
+				  <div class="form-group col-md-6">
+				      <label for="inputEmail4">Email</label>
+				      <b><%= @user.email %></b>
+				 </div>
+          <%= form_for(@product) do |f| %>
 
-				  <div class="form-row">
-				  		
+				  
+
 				    <div class="form-group col-md-6">
-				      <label for="inputEmail4">Name</label>
-				      <b><%= @product.Name %></b>
-				    </div>
-				    <div class="form-group col-md-6">
-				      <label for="inputPassword4">Description</label>
+				      <label for="inputPassword4">Product</label>
 				      <b><%= @product.Description %></b>
 				    </div>
 
@@ -61,8 +62,6 @@
 					  </div>
 					  
 				</div>
-				<%= link_to "Seller profile", user_path(@user) %>
-				  <%= f.submit "Buy product" %>
 			<% end %>		
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
@@ -70,3 +69,4 @@
       </div>
   </div>
 </body>
+
