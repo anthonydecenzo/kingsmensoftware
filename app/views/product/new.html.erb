@@ -32,36 +32,36 @@
               </div>
             </div>
           </div>
-          <form>
+
+          <%= form_for :product do |f| %>
+          
 				  <div class="form-row">
 				    <div class="form-group col-md-6">
 				      <label for="inputEmail4">Product Name</label>
-				      <input type="email" class="form-control" id="inputEmail4" placeholder="Name">
+				      <%= f.text_field :Name %>
 				    </div>
 				    <div class="form-group col-md-6">
 				      <label for="inputPassword4">Product Description</label>
-				      <input type="password" class="form-control" id="inputPassword4" placeholder="Description">
+				      <%= f.text_field :Description %>
 				    </div>
 
 				  </div>
 				  <div class="form-row">
 					  <div class="form-group col-md-6">
-					  	<label for="inputAddress">Quantity</label>
-					    <input type="text" class="form-control" id="inputAddress" placeholder="1">
+					  	<label >Quantity</label>
+					    <%= f.number_field :Quantity, :class => 'text_field' %>
 					      
 					  </div>
 
 						<div class="form-group col-md-6">
-					  	<label for="inputAddress2">Price</label>
-					    <input type="text" class="form-control" id="inputAddress2" placeholder="9.99">
+					  	<label>Price</label>
+					    <%= f.number_field :Price, class: :text_field, step: :any %>
 					      
 					  </div>
 					  
-					</div>
-				  
-
-				  <button type="submit" class="btn btn-primary">Add Product</button>
-				</form>
+				</div>
+				  <%= f.submit %>
+			<% end %>		
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
         </main>
