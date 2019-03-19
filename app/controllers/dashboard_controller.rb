@@ -7,6 +7,8 @@ class DashboardController < ApplicationController
   	@products = Product.where("UserId != ? AND Quantity != 0", current_user.id)
   end
 
+
+
   def check_signed_in
   	redirect_to user_session_path if !signed_in?
   end
