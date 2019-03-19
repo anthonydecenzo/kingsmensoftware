@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'order/show'
+  get 'order/destroy'
+  get 'order/index'
   get 'users/show'
   get 'product/index'
   get 'product/show'
