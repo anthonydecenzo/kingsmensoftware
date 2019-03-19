@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
 	before_action :check_signed_in
 
   def index
+  	@products = Product.all
   end
 
   def check_signed_in

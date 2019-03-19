@@ -61,7 +61,7 @@
 					  </div>
 					  
 				</div>
-				<%= link_to "Seller profile", user_path(@user) %>
+				<%= link_to "Seller profile", user_path(@user) if @user != nil %>
 				  <%= f.submit "Buy product" %>
 			<% end %>		
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>

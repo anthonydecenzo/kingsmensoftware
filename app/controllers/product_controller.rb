@@ -14,7 +14,12 @@ class ProductController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
-  	@user = User.find(@product.UserId)
+
+  	@user = nil
+  	
+  	if(@product.UserId != nil)
+  		@user = User.find(@product.UserId)
+  	end
   end
 
 

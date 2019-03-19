@@ -1,4 +1,5 @@
 <body>
+
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -21,10 +22,10 @@
 
           </div>
         </nav>
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2">What's on the market</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 
@@ -32,10 +33,72 @@
             </div>
           </div>
 
+<div class="album py-5 bg-light">
+
+
+        <div class="container">
+
+          <div class="row">
+          		
+            <div class="col-md-6">
+ <% @products.each do |f| %>
+              <div class="card mb-6 box-shadow">
+                
+                 
+				  <div class="form-row">
+				  		
+				    <div class="form-group col-md-6">
+				      <label for="inputEmail4">Name</label>
+				      <b><%= f.Name %></b>
+				    </div>
+				    <div class="form-group col-md-6">
+				      <label for="inputPassword4">Description</label>
+				      <b><%= f.Description %></b>
+				    </div>
+
+				  </div>
+
+				  <div class="form-row">
+					  <div class="form-group col-md-6">
+					  	<label >Quantity</label>
+					    <b><%= f.Quantity %></b>
+					      
+					  </div>
+
+						<div class="form-group col-md-6">
+					  	<label>Price</label>
+					     <b><%= f.Price %></b>
+					      
+					  </div>
+					  
+				   </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    	<%= link_to 'View', product_path(f) %>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+                 <% end %>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+				
+
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
         </main>
       </div>
-    </div>
-
-  </body>
+  </div>
+</body>
