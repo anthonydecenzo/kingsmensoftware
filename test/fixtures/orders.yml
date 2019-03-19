@@ -2,12 +2,14 @@
 
 one:
   SellerId: 1
+  BuyerId: 1
   ProductId: 1
   Quantity: 1
   Notified: false
 
 two:
   SellerId: 1
+  BuyerId: 1
   ProductId: 1
   Quantity: 1
   Notified: false

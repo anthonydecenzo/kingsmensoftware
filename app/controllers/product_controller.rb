@@ -16,7 +16,7 @@ class ProductController < ApplicationController
   	@product = Product.find(params[:id])
 
   	@user = nil
-  	
+
   	if(@product.UserId != nil)
   		@user = User.find(@product.UserId)
   	end
@@ -44,6 +44,15 @@ class ProductController < ApplicationController
 
   def edit
 
+  end
+
+  def update
+  	@product = Product.find(params[:id])
+
+  	@order = Order.new
+
+  	@order.SellerId = @product.UserId
+  	
   end
 
   # strong params are useful for requiring and permitting certain data fields
