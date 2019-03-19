@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   get 'dashboard/index'
 
   post 'product/new'
-
+  post 'product/create'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :post
+  resources :product
 
   get 'welcome/index'
 
