@@ -9,7 +9,7 @@ class ProductController < ApplicationController
 	end
 
   def index
-  	@product  = Product.all
+  	@products = Product.where("UserId = ?", current_user.id)
   end
 
   def show
@@ -20,6 +20,7 @@ class ProductController < ApplicationController
   	if(@product.UserId != nil)
   		@user = User.find(@product.UserId)
   	end
+
   end
 
 
@@ -36,6 +37,7 @@ class ProductController < ApplicationController
 	else
 		render 'new'
 	end
+
   end
 
   def new
@@ -43,34 +45,45 @@ class ProductController < ApplicationController
   end
 
   def edit
+  	@product = Product.find(params[:id])
+  end
+
+  def destroy
+  	@product = Product.find(params[:id])
+  	@product.destroy
 
   end
 
+
   def update
-  	@product = Product.find(params[:id])
+  	
+@product = Product.find(params[:id])
+  	@product.update(product_params)
+
+		if(@product.Quantity > 0 and @product != nil)
+		  	@order = Order.new
+
+		  	@order.SellerId = @product.UserId
+		  	@order.BuyerId = current_user.id
+		  	@order.ProductId = @product.id
+		  	@order.Quantity = 1
+		  	@order.Notified = false
+
+		  	@order.save
+
+		  	@product.Quantity = @product.Quantity - 1
+		  	@product.save
+
+		  	render 'show'
+		  else 
+		  	render 'show'
+		 end
 	
-	if(@product.Quantity > 0 and @product != nil)
-	  	@order = Order.new
-
-	  	@order.SellerId = @product.UserId
-	  	@order.BuyerId = current_user.id
-	  	@order.ProductId = @product.id
-	  	@order.Quantity = 1
-	  	@order.Notified = false
-
-	  	@order.save
-
-	  	@product.Quantity = @product.Quantity - 1
-	  	@product.save
-
-	  	render 'show'
-	  else 
-	  	render 'show'
-	 end
   end
 
   # strong params are useful for requiring and permitting certain data fields
   def product_params
   	params.require(:product).permit(:Name, :Description, :Quantity, :Price)
   end
+
 end
