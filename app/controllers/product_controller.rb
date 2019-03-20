@@ -8,6 +8,7 @@ class ProductController < ApplicationController
 		redirect_to user_session_path if !signed_in?
 	end
 
+	# construct a query that returns all records with current user id
   def index
   	@products = Product.where("UserId = ?", current_user.id)
   end
@@ -55,6 +56,7 @@ class ProductController < ApplicationController
   end
 
 
+  # this is used to edit a product and to purchase a product
   def update
   	
 @product = Product.find(params[:id])
